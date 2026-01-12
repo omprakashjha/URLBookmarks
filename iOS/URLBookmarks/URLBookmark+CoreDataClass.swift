@@ -1,0 +1,1 @@
+../../Shared/URLBookmark+CoreDataClass.swift

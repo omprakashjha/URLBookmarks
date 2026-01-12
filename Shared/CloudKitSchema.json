@@ -1,0 +1,64 @@
+{
+  "recordTypes": {
+    "URLBookmark": {
+      "fields": {
+        "url": {
+          "type": "STRING",
+          "required": true
+        },
+        "title": {
+          "type": "STRING",
+          "required": false
+        },
+        "notes": {
+          "type": "STRING",
+          "required": false
+        },
+        "createdAt": {
+          "type": "DATE_TIME",
+          "required": true
+        },
+        "modifiedAt": {
+          "type": "DATE_TIME",
+          "required": true
+        },
+        "isDeleted": {
+          "type": "INT64",
+          "required": true
+        }
+      },
+      "indexes": [
+        {
+          "name": "urlIndex",
+          "fields": ["url"]
+        },
+        {
+          "name": "createdAtIndex",
+          "fields": ["createdAt"]
+        },
+        {
+          "name": "modifiedAtIndex",
+          "fields": ["modifiedAt"]
+        }
+      ]
+    },
+    "UserSettings": {
+      "fields": {
+        "syncEnabled": {
+          "type": "INT64",
+          "required": true
+        },
+        "lastSyncDate": {
+          "type": "DATE_TIME",
+          "required": false
+        }
+      }
+    }
+  },
+  "zones": {
+    "URLBookmarksZone": {
+      "type": "CUSTOM",
+      "atomic": true
+    }
+  }
+}
