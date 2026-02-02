@@ -37,7 +37,7 @@ struct GeneralSettingsView: View {
                 
                 Text("Version 1.0.0")
                     .font(.caption)
-                    .foregroundColor(.tertiary)
+                    .foregroundColor(Color(nsColor: .tertiaryLabelColor))
             }
             
             Spacer()
@@ -89,7 +89,7 @@ struct SyncSettingsView: View {
                         
                         Text("To sync bookmarks across devices, enable iCloud sync and ensure you're signed in to iCloud on all devices.")
                             .font(.caption)
-                            .foregroundColor(.tertiary)
+                            .foregroundColor(Color(nsColor: .tertiaryLabelColor))
                     }
                     .padding()
                     .background(Color(NSColor.controlBackgroundColor))

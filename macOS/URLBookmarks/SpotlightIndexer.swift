@@ -1,7 +1,8 @@
 import Foundation
 import CoreSpotlight
-import MobileCoreServices
+import UniformTypeIdentifiers
 import CoreData
+import AppKit
 
 class SpotlightIndexer {
     static let shared = SpotlightIndexer()
@@ -13,21 +14,26 @@ class SpotlightIndexer {
         let attributeSet = CSSearchableItemAttributeSet(contentType: .url)
         
         // Basic attributes
-        attributeSet.title = bookmark.title ?? bookmark.url
+        attributeSet.title = bookmark.title ?? bookmark.url ?? "Untitled"
         attributeSet.contentDescription = bookmark.notes
-        attributeSet.url = URL(string: bookmark.url)
+        if let urlString = bookmark.url {
+            attributeSet.url = URL(string: urlString)
+        }
         
         // Additional metadata
-        attributeSet.keywords = [bookmark.url, bookmark.title ?? ""].compactMap { $0 }
+        attributeSet.keywords = [bookmark.url, bookmark.title].compactMap { $0 }
         attributeSet.contentCreationDate = bookmark.createdAt
         attributeSet.contentModificationDate = bookmark.modifiedAt
         
         // App-specific attributes
-        attributeSet.relatedUniqueIdentifier = bookmark.id.uuidString
+        if let id = bookmark.id {
+            attributeSet.relatedUniqueIdentifier = id.uuidString
+        }
         
         // Create searchable item
+        guard let id = bookmark.id else { return }
         let searchableItem = CSSearchableItem(
-            uniqueIdentifier: bookmark.id.uuidString,
+            uniqueIdentifier: id.uuidString,
             domainIdentifier: "com.urlbookmarks.app.bookmarks",
             attributeSet: attributeSet
         )
@@ -41,7 +47,8 @@ class SpotlightIndexer {
     }
     
     func removeBookmark(_ bookmark: URLBookmark) {
-        searchableIndex.deleteSearchableItems(withIdentifiers: [bookmark.id.uuidString]) { error in
+        guard let id = bookmark.id else { return }
+        searchableIndex.deleteSearchableItems(withIdentifiers: [id.uuidString]) { error in
             if let error = error {
                 print("Spotlight removal error: \(error)")
             }
@@ -77,13 +84,13 @@ class SpotlightIndexer {
         
         let persistenceController = PersistenceController.shared
         let fetchRequest = URLBookmark.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@ AND isDeleted == NO", uuid as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "id == %@ AND isArchived == NO", uuid as CVarArg)
         
         do {
             let bookmarks = try persistenceController.context.fetch(fetchRequest)
-            if let bookmark = bookmarks.first {
+            if let bookmark = bookmarks.first, let urlString = bookmark.url {
                 // Open the URL
-                if let url = URL(string: bookmark.url) {
+                if let url = URL(string: urlString) {
                     NSWorkspace.shared.open(url)
                     return true
                 }

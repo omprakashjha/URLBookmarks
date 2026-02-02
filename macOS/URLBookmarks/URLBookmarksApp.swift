@@ -1,5 +1,6 @@
 import SwiftUI
 import AppKit
+import CoreSpotlight
 
 @main
 struct URLBookmarksApp: App {

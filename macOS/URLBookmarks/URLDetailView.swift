@@ -18,7 +18,7 @@ struct URLDetailView: View {
                             .fill(Color.blue.opacity(0.2))
                             .frame(width: 32, height: 32)
                             .overlay(
-                                Text(String(bookmark.url.prefix(1).uppercased()))
+                                Text(String((bookmark.url ?? "U").prefix(1).uppercased()))
                                     .font(.title3)
                                     .fontWeight(.medium)
                             )
@@ -34,7 +34,7 @@ struct URLDetailView: View {
                                     .fontWeight(.semibold)
                             }
                             
-                            Text(bookmark.url)
+                            Text(bookmark.url ?? "")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
@@ -107,15 +107,19 @@ struct URLDetailView: View {
                     HStack {
                         Text("Created:")
                         Spacer()
-                        Text(bookmark.createdAt, style: .date)
-                            .foregroundColor(.secondary)
+                        if let createdAt = bookmark.createdAt {
+                            Text(createdAt, style: .date)
+                                .foregroundColor(.secondary)
+                        }
                     }
                     
                     HStack {
                         Text("Modified:")
                         Spacer()
-                        Text(bookmark.modifiedAt, style: .date)
-                            .foregroundColor(.secondary)
+                        if let modifiedAt = bookmark.modifiedAt {
+                            Text(modifiedAt, style: .date)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
                 .font(.subheadline)
@@ -142,19 +146,23 @@ struct URLDetailView: View {
     }
     
     private func openURL() {
-        if let url = URL(string: bookmark.url) {
+        if let urlString = bookmark.url, let url = URL(string: urlString) {
             NSWorkspace.shared.open(url)
         }
     }
     
     private func copyURL() {
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(bookmark.url, forType: .string)
+        if let urlString = bookmark.url {
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(urlString, forType: .string)
+        }
     }
     
     private func shareURL() {
-        let sharingService = NSSharingService(named: .composeMessage)
-        sharingService?.perform(withItems: [bookmark.url])
+        if let urlString = bookmark.url {
+            let sharingService = NSSharingService(named: .composeMessage)
+            sharingService?.perform(withItems: [urlString])
+        }
     }
 }
 

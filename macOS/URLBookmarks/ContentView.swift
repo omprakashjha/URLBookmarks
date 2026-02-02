@@ -7,7 +7,7 @@ struct ContentView: View {
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \URLBookmark.modifiedAt, ascending: false)],
-        predicate: NSPredicate(format: "isDeleted == NO"),
+        predicate: NSPredicate(format: "isArchived == NO"),
         animation: .default)
     private var bookmarks: FetchedResults<URLBookmark>
     
@@ -41,12 +41,17 @@ struct ContentView: View {
                 // URL List
                 List(filteredBookmarks, id: \.id, selection: $selectedBookmark) { bookmark in
                     URLBookmarkRow(bookmark: bookmark)
+                        .tag(bookmark)
                         .contextMenu {
                             Button("Open URL") {
-                                openURL(bookmark.url)
+                                if let urlString = bookmark.url {
+                                    openURL(urlString)
+                                }
                             }
                             Button("Copy URL") {
-                                copyToClipboard(bookmark.url)
+                                if let urlString = bookmark.url {
+                                    copyToClipboard(urlString)
+                                }
                             }
                             Divider()
                             Button("Delete", role: .destructive) {
@@ -55,17 +60,21 @@ struct ContentView: View {
                         }
                 }
                 .listStyle(.sidebar)
-            }
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                
+                // Bottom toolbar
+                HStack {
                     Button(action: { showingAddURL = true }) {
                         Image(systemName: "plus")
                     }
-                }
-                
-                ToolbarItem(placement: .status) {
+                    .buttonStyle(.plain)
+                    .help("Add Bookmark")
+                    
+                    Spacer()
+                    
                     SyncStatusView()
                 }
+                .padding()
+                .background(Color(NSColor.controlBackgroundColor))
             }
         } detail: {
             if let selectedBookmark = selectedBookmark {
@@ -131,13 +140,18 @@ struct ContentView: View {
     }
     
     private func exportBookmarks(to url: URL) {
-        let bookmarksData = bookmarks.map { bookmark in
-            [
-                "url": bookmark.url,
+        let bookmarksData = bookmarks.compactMap { bookmark -> [String: String]? in
+            guard let urlString = bookmark.url,
+                  let createdAt = bookmark.createdAt,
+                  let modifiedAt = bookmark.modifiedAt else {
+                return nil
+            }
+            return [
+                "url": urlString,
                 "title": bookmark.title ?? "",
                 "notes": bookmark.notes ?? "",
-                "createdAt": ISO8601DateFormatter().string(from: bookmark.createdAt),
-                "modifiedAt": ISO8601DateFormatter().string(from: bookmark.modifiedAt)
+                "createdAt": ISO8601DateFormatter().string(from: createdAt),
+                "modifiedAt": ISO8601DateFormatter().string(from: modifiedAt)
             ]
         }
         
