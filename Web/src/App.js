@@ -16,6 +16,7 @@ function App() {
   const [syncStatus, setSyncStatus] = useState('idle');
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [isDemoMode, setIsDemoMode] = useState(DEMO_MODE);
+  const [viewMode, setViewMode] = useState('list'); // 'list' or 'grid'
 
   useEffect(() => {
     initializeCloudKit();
@@ -23,7 +24,6 @@ function App() {
 
   const initializeCloudKit = async () => {
     if (isDemoMode) {
-      console.log('Running in demo mode');
       setAuthState('signedIn');
       setIsAuthenticated(true);
       setBookmarks(DEMO_BOOKMARKS);
@@ -499,26 +499,28 @@ function App() {
         <div className="header-content">
           <h1 className="logo">
             URL Bookmarks
-            {isDemoMode && <span className="demo-badge">Demo Mode</span>}
+            {isDemoMode && <span className="demo-badge">Demo</span>}
           </h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             {isAuthenticated && <SyncStatus status={syncStatus} />}
-            <AuthButton
-              isAuthenticated={isAuthenticated}
-              onSignIn={handleSignIn}
-              onSignOut={handleSignOut}
-            />
+            {!isDemoMode && (
+              <AuthButton
+                isAuthenticated={isAuthenticated}
+                onSignIn={handleSignIn}
+                onSignOut={handleSignOut}
+              />
+            )}
           </div>
         </div>
       </header>
 
       <div className="container">
-        {!isAuthenticated ? (
+        {!isAuthenticated && !isDemoMode ? (
           <div className="empty-state">
             <div className="empty-state-icon">🔐</div>
             <h2 className="empty-state-title">Sign In Required</h2>
             <p className="empty-state-description">
-              Sign in with your Apple ID to access your URL bookmarks across all devices.
+              Sign in with your Apple ID to access your bookmarks
             </p>
           </div>
         ) : (
@@ -526,19 +528,19 @@ function App() {
             <div className="search-container">
               <input
                 type="text"
-                placeholder="Search bookmarks..."
+                placeholder="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
               />
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
+            <div className="toolbar">
               <button
                 onClick={() => setShowAddModal(true)}
                 className="button"
               >
-                Add Bookmark
+                + Add
               </button>
               <button
                 onClick={loadBookmarks}
@@ -554,43 +556,78 @@ function App() {
                   className="button button-secondary"
                   disabled={bookmarks.length === 0}
                 >
-                  Export ▼
+                  Export
                 </button>
                 {showExportMenu && (
                   <div style={{
                     position: 'absolute',
                     top: '100%',
                     left: 0,
+                    marginTop: '4px',
                     background: 'white',
-                    border: '1px solid #d2d2d7',
-                    borderRadius: '8px',
+                    border: '0.5px solid rgba(0, 0, 0, 0.1)',
+                    borderRadius: '10px',
                     boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
                     zIndex: 1000,
-                    minWidth: '120px'
+                    minWidth: '120px',
+                    overflow: 'hidden'
                   }}>
                     <button
                       onClick={() => { handleExport('json'); setShowExportMenu(false); }}
-                      style={{ display: 'block', width: '100%', padding: '8px 12px', border: 'none', background: 'none', textAlign: 'left', cursor: 'pointer' }}
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        padding: '10px 12px', 
+                        border: 'none', 
+                        background: 'none', 
+                        textAlign: 'left', 
+                        cursor: 'pointer',
+                        fontSize: '15px'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = '#f2f2f7'}
+                      onMouseLeave={(e) => e.target.style.background = 'none'}
                     >
-                      JSON Format
+                      JSON
                     </button>
                     <button
                       onClick={() => { handleExport('csv'); setShowExportMenu(false); }}
-                      style={{ display: 'block', width: '100%', padding: '8px 12px', border: 'none', background: 'none', textAlign: 'left', cursor: 'pointer' }}
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        padding: '10px 12px', 
+                        border: 'none', 
+                        background: 'none', 
+                        textAlign: 'left', 
+                        cursor: 'pointer',
+                        fontSize: '15px'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = '#f2f2f7'}
+                      onMouseLeave={(e) => e.target.style.background = 'none'}
                     >
-                      CSV Format
+                      CSV
                     </button>
                     <button
                       onClick={() => { handleExport('html'); setShowExportMenu(false); }}
-                      style={{ display: 'block', width: '100%', padding: '8px 12px', border: 'none', background: 'none', textAlign: 'left', cursor: 'pointer' }}
+                      style={{ 
+                        display: 'block', 
+                        width: '100%', 
+                        padding: '10px 12px', 
+                        border: 'none', 
+                        background: 'none', 
+                        textAlign: 'left', 
+                        cursor: 'pointer',
+                        fontSize: '15px'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = '#f2f2f7'}
+                      onMouseLeave={(e) => e.target.style.background = 'none'}
                     >
-                      HTML Format
+                      HTML
                     </button>
                   </div>
                 )}
               </div>
               
-              <label className="button button-secondary" style={{ cursor: 'pointer' }}>
+              <label className="button button-secondary" style={{ cursor: 'pointer', margin: 0 }}>
                 Import
                 <input
                   type="file"
@@ -599,12 +636,21 @@ function App() {
                   style={{ display: 'none' }}
                 />
               </label>
+
+              <button
+                onClick={() => setViewMode(viewMode === 'list' ? 'grid' : 'list')}
+                className="view-toggle-single"
+                title={viewMode === 'list' ? 'Grid view' : 'List view'}
+              >
+                {viewMode === 'list' ? '⊞' : '☰'}
+              </button>
             </div>
 
             <BookmarkList
               bookmarks={filteredBookmarks}
               onDelete={handleDeleteBookmark}
               searchTerm={searchTerm}
+              viewMode={viewMode}
             />
 
             {showAddModal && (

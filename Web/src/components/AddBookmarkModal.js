@@ -84,44 +84,46 @@ function AddBookmarkModal({ onSave, onClose }) {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="form-label">URL *</label>
-            <input
-              type="url"
-              value={url}
-              onChange={handleUrlChange}
-              placeholder="https://example.com"
-              className="form-input"
-              required
-              autoFocus
-            />
-            {!isValidUrl && (
-              <div style={{ color: '#ff3b30', fontSize: '14px', marginTop: '4px' }}>
-                Please enter a valid URL
-              </div>
-            )}
-          </div>
+          <div className="modal-body">
+            <div className="form-group">
+              <label className="form-label">URL</label>
+              <input
+                type="url"
+                value={url}
+                onChange={handleUrlChange}
+                placeholder="https://example.com"
+                className="form-input"
+                required
+                autoFocus
+              />
+              {!isValidUrl && (
+                <div style={{ color: '#ff3b30', fontSize: '13px', marginTop: '4px' }}>
+                  Please enter a valid URL
+                </div>
+              )}
+            </div>
 
-          <div className="form-group">
-            <label className="form-label">Title</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Website title"
-              className="form-input"
-            />
-          </div>
+            <div className="form-group">
+              <label className="form-label">Title</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Optional"
+                className="form-input"
+              />
+            </div>
 
-          <div className="form-group">
-            <label className="form-label">Notes</label>
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add notes about this URL"
-              className="form-input form-textarea"
-              rows={3}
-            />
+            <div className="form-group">
+              <label className="form-label">Notes</label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Optional"
+                className="form-input form-textarea"
+                rows={3}
+              />
+            </div>
           </div>
 
           <div className="form-actions">
@@ -129,6 +131,7 @@ function AddBookmarkModal({ onSave, onClose }) {
               type="button"
               onClick={onClose}
               className="button button-secondary"
+              style={{ flex: 1 }}
             >
               Cancel
             </button>
@@ -136,8 +139,9 @@ function AddBookmarkModal({ onSave, onClose }) {
               type="submit"
               className="button"
               disabled={!url || !isValidUrl}
+              style={{ flex: 1 }}
             >
-              Save Bookmark
+              Add
             </button>
           </div>
         </form>
