@@ -135,14 +135,20 @@ class OfflineManager: ObservableObject {
         
         do {
             let bookmarks = try persistenceController.context.fetch(fetchRequest)
-            let cacheData = bookmarks.map { bookmark in
-                [
-                    "id": bookmark.id.uuidString,
-                    "url": bookmark.url,
+            let cacheData = bookmarks.compactMap { bookmark -> [String: Any]? in
+                guard let id = bookmark.id,
+                      let url = bookmark.url,
+                      let createdAt = bookmark.createdAt,
+                      let modifiedAt = bookmark.modifiedAt else {
+                    return nil
+                }
+                return [
+                    "id": id.uuidString,
+                    "url": url,
                     "title": bookmark.title ?? "",
                     "notes": bookmark.notes ?? "",
-                    "createdAt": bookmark.createdAt.timeIntervalSince1970,
-                    "modifiedAt": bookmark.modifiedAt.timeIntervalSince1970
+                    "createdAt": createdAt.timeIntervalSince1970,
+                    "modifiedAt": modifiedAt.timeIntervalSince1970
                 ]
             }
             

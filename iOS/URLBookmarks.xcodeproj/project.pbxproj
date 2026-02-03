@@ -7,37 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A000001 /* URLBookmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000 /* URLBookmarksApp.swift */; };
-		2A000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000002 /* ContentView.swift */; };
-		2A000005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A000004 /* Assets.xcassets */; };
-		2A000008 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A000007 /* Preview Assets.xcassets */; };
-		2A00000A /* URLBookmarks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A000009 /* URLBookmarks.xcdatamodeld */; };
-		2A00000C /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00000B /* PersistenceController.swift */; };
-		2A00000E /* URLBookmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00000D /* URLBookmark+CoreDataClass.swift */; };
-		2A000010 /* URLBookmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00000F /* URLBookmarkRow.swift */; };
-		2A000012 /* AddURLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000011 /* AddURLView.swift */; };
-		2A000014 /* URLDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000013 /* URLDetailView.swift */; };
-		2A000016 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000015 /* SettingsView.swift */; };
+		3A000001 /* URLBookmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000001 /* URLBookmarksApp.swift */; };
+		3A000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000002 /* ContentView.swift */; };
+		3A000003 /* URLBookmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000003 /* URLBookmarkRow.swift */; };
+		3A000004 /* AddURLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000004 /* AddURLView.swift */; };
+		3A000005 /* URLDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000005 /* URLDetailView.swift */; };
+		3A000006 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000006 /* SettingsView.swift */; };
+		3A000007 /* BackupManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000007 /* BackupManagerView.swift */; };
+		3A000008 /* ConflictResolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000008 /* ConflictResolutionView.swift */; };
+		3A000009 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000009 /* PersistenceController.swift */; };
+		3A00000A /* URLBookmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000A /* URLBookmark+CoreDataClass.swift */; };
+		3A00000B /* URLBookmarks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000B /* URLBookmarks.xcdatamodeld */; };
+		3A00000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B00000C /* Assets.xcassets */; };
+		3A00000D /* OfflineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000F /* OfflineManager.swift */; };
+		3A00000E /* PerformanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000010 /* PerformanceManager.swift */; };
+		3A00000F /* CrossPlatformSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000011 /* CrossPlatformSyncManager.swift */; };
+		3A000010 /* ExportImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000012 /* ExportImportService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A000000 /* URLBookmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBookmarksApp.swift; sourceTree = "<group>"; };
-		2A000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2A000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2A000007 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2A000009 /* URLBookmarks.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = URLBookmarks.xcdatamodeld; sourceTree = "<group>"; };
-		2A00000B /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		2A00000D /* URLBookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLBookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2A00000F /* URLBookmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBookmarkRow.swift; sourceTree = "<group>"; };
-		2A000011 /* AddURLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddURLView.swift; sourceTree = "<group>"; };
-		2A000013 /* URLDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDetailView.swift; sourceTree = "<group>"; };
-		2A000015 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		2AFFFFFF /* URLBookmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLBookmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A000017 /* URLBookmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = URLBookmarks.entitlements; sourceTree = "<group>"; };
+		3B000001 /* URLBookmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLBookmarksApp.swift; path = ../URLBookmarksApp.swift; sourceTree = "<group>"; };
+		3B000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../ContentView.swift; sourceTree = "<group>"; };
+		3B000003 /* URLBookmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLBookmarkRow.swift; path = ../URLBookmarkRow.swift; sourceTree = "<group>"; };
+		3B000004 /* AddURLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddURLView.swift; path = ../AddURLView.swift; sourceTree = "<group>"; };
+		3B000005 /* URLDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLDetailView.swift; path = ../URLDetailView.swift; sourceTree = "<group>"; };
+		3B000006 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../SettingsView.swift; sourceTree = "<group>"; };
+		3B000007 /* BackupManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupManagerView.swift; path = ../BackupManagerView.swift; sourceTree = "<group>"; };
+		3B000008 /* ConflictResolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConflictResolutionView.swift; path = ../ConflictResolutionView.swift; sourceTree = "<group>"; };
+		3B000009 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistenceController.swift; path = ../URLBookmarks/PersistenceController.swift; sourceTree = "<group>"; };
+		3B00000A /* URLBookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "URLBookmark+CoreDataClass.swift"; path = "../URLBookmarks/URLBookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3B00000B /* URLBookmarks.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = URLBookmarks.xcdatamodeld; path = ../URLBookmarks/URLBookmarks.xcdatamodeld; sourceTree = "<group>"; };
+		3B00000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../URLBookmarks/Assets.xcassets; sourceTree = "<group>"; };
+		3B00000D /* URLBookmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = URLBookmarks.entitlements; path = ../URLBookmarks/URLBookmarks.entitlements; sourceTree = "<group>"; };
+		3B00000F /* OfflineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineManager.swift; path = ../../Shared/OfflineManager.swift; sourceTree = "<group>"; };
+		3B000010 /* PerformanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PerformanceManager.swift; path = ../../Shared/PerformanceManager.swift; sourceTree = "<group>"; };
+		3B000011 /* CrossPlatformSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrossPlatformSyncManager.swift; path = ../../Shared/CrossPlatformSyncManager.swift; sourceTree = "<group>"; };
+		3B000012 /* ExportImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExportImportService.swift; path = ../../Shared/ExportImportService.swift; sourceTree = "<group>"; };
+		3C000001 /* URLBookmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLBookmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2AFFFFFC /* Frameworks */ = {
+		3D000001 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,59 +57,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2AFFFFF6 = {
+		3E000001 = {
 			isa = PBXGroup;
 			children = (
-				2AFFFFF9 /* URLBookmarks */,
-				2AFFFFFF /* Products */,
+				3E000002 /* URLBookmarks */,
+				3E000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2AFFFFFF /* Products */ = {
+		3E000002 /* URLBookmarks */ = {
 			isa = PBXGroup;
 			children = (
-				2AFFFFFF /* URLBookmarks.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2AFFFFF9 /* URLBookmarks */ = {
-			isa = PBXGroup;
-			children = (
-				2A000017 /* URLBookmarks.entitlements */,
-				2A000000 /* URLBookmarksApp.swift */,
-				2A000002 /* ContentView.swift */,
-				2A00000F /* URLBookmarkRow.swift */,
-				2A000011 /* AddURLView.swift */,
-				2A000013 /* URLDetailView.swift */,
-				2A000015 /* SettingsView.swift */,
-				2A00000B /* PersistenceController.swift */,
-				2A00000D /* URLBookmark+CoreDataClass.swift */,
-				2A000009 /* URLBookmarks.xcdatamodeld */,
-				2A000004 /* Assets.xcassets */,
-				2A000006 /* Preview Content */,
+				3B00000D /* URLBookmarks.entitlements */,
+				3B000001 /* URLBookmarksApp.swift */,
+				3B000002 /* ContentView.swift */,
+				3B000003 /* URLBookmarkRow.swift */,
+				3B000004 /* AddURLView.swift */,
+				3B000005 /* URLDetailView.swift */,
+				3B000006 /* SettingsView.swift */,
+				3B000007 /* BackupManagerView.swift */,
+				3B000008 /* ConflictResolutionView.swift */,
+				3B000009 /* PersistenceController.swift */,
+				3B00000A /* URLBookmark+CoreDataClass.swift */,
+				3B00000B /* URLBookmarks.xcdatamodeld */,
+				3B00000F /* OfflineManager.swift */,
+				3B000010 /* PerformanceManager.swift */,
+				3B000011 /* CrossPlatformSyncManager.swift */,
+				3B000012 /* ExportImportService.swift */,
+				3B00000C /* Assets.xcassets */,
 			);
 			path = URLBookmarks;
 			sourceTree = "<group>";
 		};
-		2A000006 /* Preview Content */ = {
+		3E000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2A000007 /* Preview Assets.xcassets */,
+				3C000001 /* URLBookmarks.app */,
 			);
-			path = "Preview Content";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2AFFFFFE /* URLBookmarks */ = {
+		3F000001 /* URLBookmarks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A000018 /* Build configuration list for PBXNativeTarget "URLBookmarks" */;
+			buildConfigurationList = 3F000002 /* Build configuration list for PBXNativeTarget "URLBookmarks" */;
 			buildPhases = (
-				2AFFFFFB /* Sources */,
-				2AFFFFFC /* Frameworks */,
-				2AFFFFFD /* Resources */,
+				3F000003 /* Sources */,
+				3D000001 /* Frameworks */,
+				3F000004 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -107,25 +114,25 @@
 			);
 			name = URLBookmarks;
 			productName = URLBookmarks;
-			productReference = 2AFFFFFF /* URLBookmarks.app */;
+			productReference = 3C000001 /* URLBookmarks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2AFFFFF7 /* Project object */ = {
+		3F000005 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					2AFFFFFE = {
+					3F000001 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 2AFFFFFA /* Build configuration list for PBXProject "URLBookmarks" */;
+			buildConfigurationList = 3F000006 /* Build configuration list for PBXProject "URLBookmarks" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,49 +140,54 @@
 				en,
 				Base,
 			);
-			mainGroup = 2AFFFFF6;
-			productRefGroup = 2AFFFFFF /* Products */;
+			mainGroup = 3E000001;
+			productRefGroup = 3E000003 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2AFFFFFE /* URLBookmarks */,
+				3F000001 /* URLBookmarks */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2AFFFFFD /* Resources */ = {
+		3F000004 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A000008 /* Preview Assets.xcassets in Resources */,
-				2A000005 /* Assets.xcassets in Resources */,
+				3A00000C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2AFFFFFB /* Sources */ = {
+		3F000003 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A00000C /* PersistenceController.swift in Sources */,
-				2A000003 /* ContentView.swift in Sources */,
-				2A00000A /* URLBookmarks.xcdatamodeld in Sources */,
-				2A000001 /* URLBookmarksApp.swift in Sources */,
-				2A00000E /* URLBookmark+CoreDataClass.swift in Sources */,
-				2A000010 /* URLBookmarkRow.swift in Sources */,
-				2A000012 /* AddURLView.swift in Sources */,
-				2A000014 /* URLDetailView.swift in Sources */,
-				2A000016 /* SettingsView.swift in Sources */,
+				3A000001 /* URLBookmarksApp.swift in Sources */,
+				3A000002 /* ContentView.swift in Sources */,
+				3A000003 /* URLBookmarkRow.swift in Sources */,
+				3A000004 /* AddURLView.swift in Sources */,
+				3A000005 /* URLDetailView.swift in Sources */,
+				3A000006 /* SettingsView.swift in Sources */,
+				3A000007 /* BackupManagerView.swift in Sources */,
+				3A000008 /* ConflictResolutionView.swift in Sources */,
+				3A000009 /* PersistenceController.swift in Sources */,
+				3A00000A /* URLBookmark+CoreDataClass.swift in Sources */,
+				3A00000B /* URLBookmarks.xcdatamodeld in Sources */,
+				3A00000D /* OfflineManager.swift in Sources */,
+				3A00000E /* PerformanceManager.swift in Sources */,
+				3A00000F /* CrossPlatformSyncManager.swift in Sources */,
+				3A000010 /* ExportImportService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2A000019 /* Debug */ = {
+		3F000007 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +250,7 @@
 			};
 			name = Debug;
 		};
-		2A00001A /* Release */ = {
+		3F000008 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -294,7 +306,7 @@
 			};
 			name = Release;
 		};
-		2A00001B /* Debug */ = {
+		3F000009 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -302,7 +314,7 @@
 				CODE_SIGN_ENTITLEMENTS = URLBookmarks/URLBookmarks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"URLBookmarks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -326,7 +338,7 @@
 			};
 			name = Debug;
 		};
-		2A00001C /* Release */ = {
+		3F00000A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -334,7 +346,7 @@
 				CODE_SIGN_ENTITLEMENTS = URLBookmarks/URLBookmarks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"URLBookmarks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -361,20 +373,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2AFFFFFA /* Build configuration list for PBXProject "URLBookmarks" */ = {
+		3F000006 /* Build configuration list for PBXProject "URLBookmarks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A000019 /* Debug */,
-				2A00001A /* Release */,
+				3F000007 /* Debug */,
+				3F000008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A000018 /* Build configuration list for PBXNativeTarget "URLBookmarks" */ = {
+		3F000002 /* Build configuration list for PBXNativeTarget "URLBookmarks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A00001B /* Debug */,
-				2A00001C /* Release */,
+				3F000009 /* Debug */,
+				3F00000A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -382,17 +394,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2A000009 /* URLBookmarks.xcdatamodeld */ = {
+		3B00000B /* URLBookmarks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2A00000A /* URLBookmarks.xcdatamodel */,
+				3B00000E /* URLBookmarks.xcdatamodel */,
 			);
-			currentVersion = 2A00000A /* URLBookmarks.xcdatamodel */;
+			currentVersion = 3B00000E /* URLBookmarks.xcdatamodel */;
 			path = URLBookmarks.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
+		3B00000E /* URLBookmarks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = URLBookmarks.xcdatamodel; sourceTree = "<group>"; };
 /* End XCVersionGroup section */
-	}
-	rootObject = 2AFFFFF7 /* Project object */;
+	};
+	rootObject = 3F000005 /* Project object */;
 }

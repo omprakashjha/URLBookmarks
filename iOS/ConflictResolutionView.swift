@@ -25,11 +25,13 @@ struct ConflictResolutionView: View {
                 // Conflicts List
                 List {
                     ForEach(Array(conflicts.enumerated()), id: \.offset) { index, conflict in
-                        ConflictRowView(
-                            conflict: conflict,
-                            resolution: resolutions[conflict.local.id.uuidString] ?? .merge
-                        ) { newResolution in
-                            resolutions[conflict.local.id.uuidString] = newResolution
+                        if let localId = conflict.local.id {
+                            ConflictRowView(
+                                conflict: conflict,
+                                resolution: resolutions[localId.uuidString] ?? .merge
+                            ) { newResolution in
+                                resolutions[localId.uuidString] = newResolution
+                            }
                         }
                     }
                 }
@@ -78,14 +80,18 @@ struct ConflictResolutionView: View {
         .onAppear {
             // Initialize with default merge resolution
             for conflict in conflicts {
-                resolutions[conflict.local.id.uuidString] = .merge
+                if let localId = conflict.local.id {
+                    resolutions[localId.uuidString] = .merge
+                }
             }
         }
     }
     
     private func resolveAll(with resolution: ConflictResolution) {
         for conflict in conflicts {
-            resolutions[conflict.local.id.uuidString] = resolution
+            if let localId = conflict.local.id {
+                resolutions[localId.uuidString] = resolution
+            }
         }
     }
     
@@ -103,7 +109,7 @@ struct ConflictRowView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // URL Header
-            Text(conflict.local.url)
+            Text(conflict.local.url ?? "Unknown URL")
                 .font(.headline)
                 .foregroundColor(.blue)
             
@@ -126,9 +132,11 @@ struct ConflictRowView: View {
                                 .lineLimit(2)
                         }
                         
-                        Text("Modified: \(formatDate(conflict.local.modifiedAt))")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
+                        if let modifiedAt = conflict.local.modifiedAt {
+                            Text("Modified: \(formatDate(modifiedAt))")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

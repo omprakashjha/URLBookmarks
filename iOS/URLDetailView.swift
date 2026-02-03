@@ -22,7 +22,7 @@ struct URLDetailView: View {
                             .fill(Color.blue.opacity(0.2))
                             .frame(width: 60, height: 60)
                             .overlay(
-                                Text(String(bookmark.url.prefix(1).uppercased()))
+                                Text(String((bookmark.url ?? "U").prefix(1).uppercased()))
                                     .font(.title)
                                     .fontWeight(.medium)
                                     .foregroundColor(.blue)
@@ -39,7 +39,7 @@ struct URLDetailView: View {
                                     .fontWeight(.semibold)
                             }
                             
-                            Text(bookmark.url)
+                            Text(bookmark.url ?? "")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                                 .lineLimit(2)
@@ -96,18 +96,22 @@ struct URLDetailView: View {
                     Text("Details")
                         .font(.headline)
                     
-                    HStack {
-                        Text("Created")
-                        Spacer()
-                        Text(bookmark.createdAt, style: .date)
-                            .foregroundColor(.secondary)
+                    if let createdAt = bookmark.createdAt {
+                        HStack {
+                            Text("Created")
+                            Spacer()
+                            Text(createdAt, style: .date)
+                                .foregroundColor(.secondary)
+                        }
                     }
                     
-                    HStack {
-                        Text("Modified")
-                        Spacer()
-                        Text(bookmark.modifiedAt, style: .date)
-                            .foregroundColor(.secondary)
+                    if let modifiedAt = bookmark.modifiedAt {
+                        HStack {
+                            Text("Modified")
+                            Spacer()
+                            Text(modifiedAt, style: .date)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
                 .font(.subheadline)
@@ -128,12 +132,14 @@ struct URLDetailView: View {
             }
         }
         .fullScreenCover(isPresented: $showingSafari) {
-            if let url = URL(string: bookmark.url) {
+            if let urlString = bookmark.url, let url = URL(string: urlString) {
                 SafariView(url: url)
             }
         }
         .sheet(isPresented: $showingShareSheet) {
-            ShareSheet(items: [bookmark.url])
+            if let urlString = bookmark.url {
+                ShareSheet(items: [urlString])
+            }
         }
     }
     

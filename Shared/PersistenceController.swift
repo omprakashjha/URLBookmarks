@@ -138,7 +138,7 @@ extension PersistenceController {
         
         // Check for duplicates
         let fetchRequest = URLBookmark.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "url == %@ AND isDeleted == NO", urlString)
+        fetchRequest.predicate = NSPredicate(format: "url == %@ AND isArchived == NO", urlString)
         
         do {
             let existingBookmarks = try context.fetch(fetchRequest)

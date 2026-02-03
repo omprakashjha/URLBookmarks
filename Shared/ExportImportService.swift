@@ -33,18 +33,24 @@ class ExportImportService {
             version: "1.0",
             exportDate: Date(),
             platform: getCurrentPlatform(),
-            bookmarks: bookmarks.map { bookmark in
-                BookmarkExportData(
-                    id: bookmark.id.uuidString,
-                    url: bookmark.url,
+            bookmarks: bookmarks.compactMap { bookmark in
+                guard let id = bookmark.id,
+                      let url = bookmark.url,
+                      let createdAt = bookmark.createdAt,
+                      let modifiedAt = bookmark.modifiedAt else {
+                    return nil
+                }
+                return BookmarkExportData(
+                    id: id.uuidString,
+                    url: url,
                     title: bookmark.title,
                     notes: bookmark.notes,
-                    createdAt: bookmark.createdAt,
-                    modifiedAt: bookmark.modifiedAt,
+                    createdAt: createdAt,
+                    modifiedAt: modifiedAt,
                     tags: [], // Future feature
                     metadata: BookmarkMetadata(
-                        domain: extractDomain(from: bookmark.url),
-                        isSecure: bookmark.url.hasPrefix("https://")
+                        domain: extractDomain(from: url),
+                        isSecure: url.hasPrefix("https://")
                     )
                 )
             }
@@ -68,12 +74,17 @@ class ExportImportService {
         var csvContent = "URL,Title,Notes,Created,Modified\n"
         
         for bookmark in bookmarks {
+            guard let url = bookmark.url,
+                  let createdAt = bookmark.createdAt,
+                  let modifiedAt = bookmark.modifiedAt else {
+                continue
+            }
             let title = escapeCSV(bookmark.title ?? "")
             let notes = escapeCSV(bookmark.notes ?? "")
-            let created = dateFormatter.string(from: bookmark.createdAt)
-            let modified = dateFormatter.string(from: bookmark.modifiedAt)
+            let created = dateFormatter.string(from: createdAt)
+            let modified = dateFormatter.string(from: modifiedAt)
             
-            csvContent += "\"\(bookmark.url)\",\"\(title)\",\"\(notes)\",\"\(created)\",\"\(modified)\"\n"
+            csvContent += "\"\(url)\",\"\(title)\",\"\(notes)\",\"\(created)\",\"\(modified)\"\n"
         }
         
         let csvData = csvContent.data(using: .utf8)!
@@ -104,17 +115,21 @@ class ExportImportService {
         """
         
         for bookmark in bookmarks {
+            guard let url = bookmark.url,
+                  let createdAt = bookmark.createdAt else {
+                continue
+            }
             htmlContent += """
             <div class="bookmark">
-                <div class="title">\(htmlEscape(bookmark.title ?? bookmark.url))</div>
-                <a href="\(bookmark.url)" class="url">\(bookmark.url)</a>
+                <div class="title">\(htmlEscape(bookmark.title ?? url))</div>
+                <a href="\(url)" class="url">\(url)</a>
             """
             
             if let notes = bookmark.notes, !notes.isEmpty {
                 htmlContent += "<div class=\"notes\">\(htmlEscape(notes))</div>"
             }
             
-            htmlContent += "<div class=\"date\">Added: \(DateFormatter.readable.string(from: bookmark.createdAt))</div>"
+            htmlContent += "<div class=\"date\">Added: \(DateFormatter.readable.string(from: createdAt))</div>"
             htmlContent += "</div>"
         }
         
@@ -155,8 +170,8 @@ class ExportImportService {
             }
             
             // Fallback to basic format
-            if let basicBookmarks = try? decoder.decode([[String: Any]].self, from: data) {
-                let bookmarks = basicBookmarks.compactMap { dict -> BookmarkExportData? in
+            if let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
+                let bookmarks = jsonObject.compactMap { dict -> BookmarkExportData? in
                     guard let url = dict["url"] as? String else { return nil }
                     
                     return BookmarkExportData(
@@ -349,8 +364,8 @@ class ExportImportService {
     
     private func mergeBookmarks(_ local: URLBookmark, _ remote: BookmarkExportData) -> Bool {
         // Use most recent title if different
-        if let remoteTitle = remote.title, remoteTitle != local.title {
-            local.title = remote.modifiedAt > local.modifiedAt ? remoteTitle : local.title
+        if let remoteTitle = remote.title, remoteTitle != local.title, let localModifiedAt = local.modifiedAt {
+            local.title = remote.modifiedAt > localModifiedAt ? remoteTitle : local.title
         }
         
         // Merge notes
@@ -364,7 +379,11 @@ class ExportImportService {
         }
         
         // Use most recent modification date
-        local.modifiedAt = max(local.modifiedAt, remote.modifiedAt)
+        if let localModifiedAt = local.modifiedAt {
+            local.modifiedAt = max(localModifiedAt, remote.modifiedAt)
+        } else {
+            local.modifiedAt = remote.modifiedAt
+        }
         
         persistenceController.save()
         return true
@@ -374,7 +393,7 @@ class ExportImportService {
     
     private func isDuplicate(url: String) -> Bool {
         let fetchRequest = URLBookmark.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "url == %@ AND isDeleted == NO", url)
+        fetchRequest.predicate = NSPredicate(format: "url == %@ AND isArchived == NO", url)
         
         do {
             let count = try persistenceController.context.count(for: fetchRequest)

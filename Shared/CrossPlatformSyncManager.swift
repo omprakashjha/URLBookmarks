@@ -12,12 +12,25 @@ class CrossPlatformSyncManager: ObservableObject {
     private let exportImportService = ExportImportService.shared
     private var syncTimer: Timer?
     
-    enum SyncStatus {
+    enum SyncStatus: Equatable {
         case idle
         case syncing
         case success
         case error(String)
         case conflictsDetected(Int)
+        
+        static func == (lhs: SyncStatus, rhs: SyncStatus) -> Bool {
+            switch (lhs, rhs) {
+            case (.idle, .idle), (.syncing, .syncing), (.success, .success):
+                return true
+            case (.error(let a), .error(let b)):
+                return a == b
+            case (.conflictsDetected(let a), .conflictsDetected(let b)):
+                return a == b
+            default:
+                return false
+            }
+        }
     }
     
     private init() {
@@ -106,7 +119,7 @@ class CrossPlatformSyncManager: ObservableObject {
         // For now, we'll simulate conflict detection
         
         let fetchRequest = URLBookmark.activeFetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "modifiedAt > %@", lastSyncDate ?? Date.distantPast as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "modifiedAt > %@", (lastSyncDate ?? Date.distantPast) as CVarArg)
         
         do {
             let localChanges = try persistenceController.context.fetch(fetchRequest)
@@ -114,23 +127,28 @@ class CrossPlatformSyncManager: ObservableObject {
             
             // Simulate remote changes that conflict with local changes
             for bookmark in localChanges {
+                guard let url = bookmark.url else { continue }
                 // In a real implementation, you would:
                 // 1. Fetch the same bookmark from CloudKit
                 // 2. Compare modification dates and content
                 // 3. Create conflicts for items modified on both sides
                 
                 if shouldSimulateConflict(bookmark) {
+                    guard let id = bookmark.id,
+                          let createdAt = bookmark.createdAt else {
+                        continue
+                    }
                     let remoteData = BookmarkExportData(
-                        id: bookmark.id.uuidString,
-                        url: bookmark.url,
+                        id: id.uuidString,
+                        url: url,
                         title: (bookmark.title ?? "") + " (Remote)",
                         notes: (bookmark.notes ?? "") + " (Modified remotely)",
-                        createdAt: bookmark.createdAt,
+                        createdAt: createdAt,
                         modifiedAt: Date(),
                         tags: [],
                         metadata: BookmarkMetadata(
-                            domain: extractDomain(from: bookmark.url),
-                            isSecure: bookmark.url.hasPrefix("https://")
+                            domain: extractDomain(from: url),
+                            isSecure: url.hasPrefix("https://")
                         )
                     )
                     
@@ -153,7 +171,7 @@ class CrossPlatformSyncManager: ObservableObject {
     private func shouldSimulateConflict(_ bookmark: URLBookmark) -> Bool {
         // Simulate conflicts for demonstration
         // In production, this would be based on actual CloudKit data
-        return bookmark.url.contains("example") && Int.random(in: 1...10) <= 2
+        return (bookmark.url?.contains("example") ?? false) && Int.random(in: 1...10) <= 2
     }
     
     // MARK: - Sync Operations
@@ -161,7 +179,7 @@ class CrossPlatformSyncManager: ObservableObject {
     private func syncLocalChanges() async throws {
         // Get locally modified bookmarks since last sync
         let fetchRequest = URLBookmark.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "modifiedAt > %@", lastSyncDate ?? Date.distantPast as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "modifiedAt > %@", (lastSyncDate ?? Date.distantPast) as CVarArg)
         
         let localChanges = try persistenceController.context.fetch(fetchRequest)
         
@@ -186,7 +204,8 @@ class CrossPlatformSyncManager: ObservableObject {
         var updatedConflicts: [BookmarkConflict] = []
         
         for conflict in pendingConflicts {
-            if let resolution = resolutions[conflict.local.id.uuidString] {
+            guard let localId = conflict.local.id else { continue }
+            if let resolution = resolutions[localId.uuidString] {
                 var updatedConflict = conflict
                 updatedConflict = BookmarkConflict(
                     local: conflict.local,
@@ -215,7 +234,10 @@ class CrossPlatformSyncManager: ObservableObject {
     
     func resolveAllConflicts(with strategy: ConflictResolution) {
         let resolutions = Dictionary(uniqueKeysWithValues: 
-            pendingConflicts.map { ($0.local.id.uuidString, strategy) }
+            pendingConflicts.compactMap { conflict -> (String, ConflictResolution)? in
+                guard let id = conflict.local.id else { return nil }
+                return (id.uuidString, strategy)
+            }
         )
         resolveConflicts(with: resolutions)
     }

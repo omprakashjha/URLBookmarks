@@ -1,10 +1,9 @@
 import Foundation
 import CoreData
-import CloudKit
 
 // MARK: - URLBookmark Entity
 @objc(URLBookmark)
-public class URLBookmark: NSManagedObject {
+public class URLBookmark: NSManagedObject, Identifiable {
     
 }
 
@@ -14,17 +13,13 @@ extension URLBookmark {
         return NSFetchRequest<URLBookmark>(entityName: "URLBookmark")
     }
     
-    @NSManaged public var id: UUID
-    @NSManaged public var url: String
+    @NSManaged public var id: UUID?
+    @NSManaged public var url: String?
     @NSManaged public var title: String?
     @NSManaged public var notes: String?
-    @NSManaged public var createdAt: Date
-    @NSManaged public var modifiedAt: Date
-    @NSManaged public var isDeleted: Bool
-    
-    // CloudKit integration
-    @NSManaged public var ckRecordID: CKRecord.ID?
-    @NSManaged public var ckRecordSystemFields: Data?
+    @NSManaged public var createdAt: Date?
+    @NSManaged public var modifiedAt: Date?
+    @NSManaged public var isArchived: Bool
 }
 
 // MARK: - Convenience Methods
@@ -38,7 +33,7 @@ extension URLBookmark {
         self.notes = notes
         self.createdAt = Date()
         self.modifiedAt = Date()
-        self.isDeleted = false
+        self.isArchived = false
     }
     
     func updateModifiedDate() {
@@ -46,7 +41,7 @@ extension URLBookmark {
     }
     
     func markAsDeleted() {
-        self.isDeleted = true
+        self.isArchived = true
         self.updateModifiedDate()
     }
 }
@@ -57,16 +52,16 @@ extension URLBookmark {
     static func searchPredicate(for searchText: String) -> NSPredicate {
         let trimmedText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedText.isEmpty else {
-            return NSPredicate(format: "isDeleted == NO")
+            return NSPredicate(format: "isArchived == NO")
         }
         
-        return NSPredicate(format: "isDeleted == NO AND (url CONTAINS[cd] %@ OR title CONTAINS[cd] %@ OR notes CONTAINS[cd] %@)", 
+        return NSPredicate(format: "isArchived == NO AND (url CONTAINS[cd] %@ OR title CONTAINS[cd] %@ OR notes CONTAINS[cd] %@)", 
                           trimmedText, trimmedText, trimmedText)
     }
     
     static func activeFetchRequest() -> NSFetchRequest<URLBookmark> {
         let request = fetchRequest()
-        request.predicate = NSPredicate(format: "isDeleted == NO")
+        request.predicate = NSPredicate(format: "isArchived == NO")
         request.sortDescriptors = [NSSortDescriptor(keyPath: \URLBookmark.modifiedAt, ascending: false)]
         return request
     }

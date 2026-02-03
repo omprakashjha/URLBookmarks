@@ -165,14 +165,16 @@ struct ContentView: View {
             persistenceController.deleteBookmark(bookmark)
         } else {
             // Queue for offline processing
-            let operation = OfflineOperation(
-                type: .deleteBookmark,
-                data: ["id": bookmark.id.uuidString]
-            )
-            offlineManager.queueOperation(operation)
-            
-            // Remove from local display
-            displayedBookmarks.removeAll { $0.id == bookmark.id }
+            if let id = bookmark.id {
+                let operation = OfflineOperation(
+                    type: .deleteBookmark,
+                    data: ["id": id.uuidString]
+                )
+                offlineManager.queueOperation(operation)
+                
+                // Remove from local display
+                displayedBookmarks.removeAll { $0.id == id }
+            }
         }
     }
 }

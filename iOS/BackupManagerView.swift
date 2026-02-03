@@ -246,7 +246,7 @@ struct BackupRowView: View {
                     
                     Text(formatDate(backup.createdAt))
                         .font(.caption2)
-                        .foregroundColor(.tertiary)
+                        .foregroundColor(.gray)
                 }
                 
                 Spacer()

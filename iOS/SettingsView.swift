@@ -278,9 +278,14 @@ struct SyncStatusView: View {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundColor(.green)
         case .syncing:
-            Image(systemName: "arrow.triangle.2.circlepath")
-                .foregroundColor(.blue)
-                .symbolEffect(.rotate)
+            if #available(iOS 18.0, *) {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .foregroundColor(.blue)
+                    .symbolEffect(.rotate)
+            } else {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .foregroundColor(.blue)
+            }
         case .success:
             Image(systemName: "checkmark.circle.fill")
                 .foregroundColor(.green)

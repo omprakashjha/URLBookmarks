@@ -10,18 +10,18 @@ struct URLBookmarkRow: View {
                 .fill(Color.blue.opacity(0.2))
                 .frame(width: 40, height: 40)
                 .overlay(
-                    Text(String(bookmark.url.prefix(1).uppercased()))
+                    Text(String((bookmark.url ?? "U").prefix(1).uppercased()))
                         .font(.title3)
                         .fontWeight(.medium)
                         .foregroundColor(.blue)
                 )
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(bookmark.title ?? bookmark.url)
+                Text(bookmark.title ?? bookmark.url ?? "Untitled")
                     .font(.headline)
                     .lineLimit(1)
                 
-                Text(bookmark.url)
+                Text(bookmark.url ?? "")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .lineLimit(1)
@@ -33,9 +33,11 @@ struct URLBookmarkRow: View {
                         .lineLimit(2)
                 }
                 
-                Text(RelativeDateTimeFormatter().localizedString(for: bookmark.modifiedAt, relativeTo: Date()))
-                    .font(.caption2)
-                    .foregroundColor(.tertiary)
+                if let modifiedAt = bookmark.modifiedAt {
+                    Text(RelativeDateTimeFormatter().localizedString(for: modifiedAt, relativeTo: Date()))
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
             }
             
             Spacer()

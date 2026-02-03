@@ -1,7 +1,8 @@
 import Foundation
 import CoreData
+import Combine
 
-class PerformanceManager {
+class PerformanceManager: ObservableObject {
     static let shared = PerformanceManager()
     
     private let persistenceController = PersistenceController.shared
@@ -50,7 +51,7 @@ class PerformanceManager {
         let fetchRequest = URLBookmark.fetchRequest()
         
         // Use compound predicate for better performance
-        let notDeletedPredicate = NSPredicate(format: "isDeleted == NO")
+        let notDeletedPredicate = NSPredicate(format: "isArchived == NO")
         let searchPredicate = NSPredicate(format: "url CONTAINS[cd] %@ OR title CONTAINS[cd] %@ OR notes CONTAINS[cd] %@", 
                                         searchText, searchText, searchText)
         
@@ -108,9 +109,9 @@ class PerformanceManager {
         let fetchRequest = URLBookmark.fetchRequest()
         
         if searchText.isEmpty {
-            fetchRequest.predicate = NSPredicate(format: "isDeleted == NO")
+            fetchRequest.predicate = NSPredicate(format: "isArchived == NO")
         } else {
-            let notDeletedPredicate = NSPredicate(format: "isDeleted == NO")
+            let notDeletedPredicate = NSPredicate(format: "isArchived == NO")
             let searchPredicate = NSPredicate(format: "url CONTAINS[cd] %@ OR title CONTAINS[cd] %@ OR notes CONTAINS[cd] %@", 
                                             searchText, searchText, searchText)
             fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [notDeletedPredicate, searchPredicate])
@@ -132,9 +133,9 @@ class PerformanceManager {
         let fetchRequest = URLBookmark.fetchRequest()
         
         if searchText.isEmpty {
-            fetchRequest.predicate = NSPredicate(format: "isDeleted == NO")
+            fetchRequest.predicate = NSPredicate(format: "isArchived == NO")
         } else {
-            let notDeletedPredicate = NSPredicate(format: "isDeleted == NO")
+            let notDeletedPredicate = NSPredicate(format: "isArchived == NO")
             let searchPredicate = NSPredicate(format: "url CONTAINS[cd] %@ OR title CONTAINS[cd] %@ OR notes CONTAINS[cd] %@", 
                                             searchText, searchText, searchText)
             fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [notDeletedPredicate, searchPredicate])
@@ -185,7 +186,7 @@ class PerformanceManager {
         let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
         
         let fetchRequest = URLBookmark.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isDeleted == YES AND modifiedAt < %@", thirtyDaysAgo as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "isArchived == YES AND modifiedAt < %@", thirtyDaysAgo as CVarArg)
         
         do {
             let oldDeletedBookmarks = try persistenceController.context.fetch(fetchRequest)
