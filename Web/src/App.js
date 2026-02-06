@@ -6,6 +6,8 @@ import AuthButton from './components/AuthButton';
 import SyncStatus from './components/SyncStatus';
 import { DEMO_MODE, DEMO_BOOKMARKS } from './config/demo';
 
+const APP_VERSION = process.env.REACT_APP_VERSION || require('../package.json').version;
+
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -662,6 +664,16 @@ function App() {
           </>
         )}
       </div>
+      
+      <footer style={{ 
+        textAlign: 'center', 
+        padding: '20px', 
+        color: '#999', 
+        fontSize: '12px',
+        borderTop: '1px solid #e5e5ea'
+      }}>
+        URL Bookmarks v{APP_VERSION}
+      </footer>
     </div>
   );
 }
