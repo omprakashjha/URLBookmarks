@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF0000010000000000000001"
-               BuildableName = "URLBookmarks.app"
-               BlueprintName = "URLBookmarks"
-               ReferencedContainer = "container:URLBookmarks.xcodeproj">
+               BuildableName = "Stash.app"
+               BlueprintName = "Stash"
+               ReferencedContainer = "container:Stash.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF0000010000000000000001"
-            BuildableName = "URLBookmarks.app"
-            BlueprintName = "URLBookmarks"
-            ReferencedContainer = "container:URLBookmarks.xcodeproj">
+            BuildableName = "Stash.app"
+            BlueprintName = "Stash"
+            ReferencedContainer = "container:Stash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF0000010000000000000001"
-            BuildableName = "URLBookmarks.app"
-            BlueprintName = "URLBookmarks"
-            ReferencedContainer = "container:URLBookmarks.xcodeproj">
+            BuildableName = "Stash.app"
+            BlueprintName = "Stash"
+            ReferencedContainer = "container:Stash.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

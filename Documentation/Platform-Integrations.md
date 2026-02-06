@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide covers setting up platform-specific integrations for the URL Bookmarks app:
+This guide covers setting up platform-specific integrations for the Stash app:
 
 - **iOS**: Share Extension + Home Screen Widget
 - **macOS**: Spotlight Integration + System Services
@@ -17,7 +17,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
    # In Xcode, add new target:
    # File → New → Target → iOS → Share Extension
    # Name: "ShareExtension"
-   # Bundle ID: com.urlbookmarks.app.ShareExtension
+   # Bundle ID: com.stash.app.ShareExtension
    ```
 
 2. **Configure Info.plist**
@@ -36,7 +36,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
    # In Xcode, add new target:
    # File → New → Target → iOS → Widget Extension
    # Name: "BookmarkWidget"
-   # Bundle ID: com.urlbookmarks.app.BookmarkWidget
+   # Bundle ID: com.stash.app.BookmarkWidget
    ```
 
 2. **Configure Widget**
@@ -63,7 +63,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
 2. **Configure Spotlight Indexing**
    - Copy `macOS/SpotlightIndexer.swift` to macOS target
    - Update `PersistenceController.swift` with Spotlight integration
-   - Update `URLBookmarksApp.swift` to handle Spotlight selections
+   - Update `StashApp.swift` to handle Spotlight selections
 
 3. **Test Spotlight Search**
    - Add bookmarks in the app
@@ -86,7 +86,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
        <key>NSMessage</key>
        <string>saveURLFromService</string>
        <key>NSPortName</key>
-       <string>URLBookmarks</string>
+       <string>Stash</string>
        <key>NSSendTypes</key>
        <array>
          <string>NSStringPboardType</string>
@@ -105,7 +105,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
    # chrome://extensions/
    # Enable "Developer mode"
    # Click "Load unpacked"
-   # Select: /Users/opjha/URLBookmarks/BrowserExtension/
+   # Select: /Users/opjha/Stash/BrowserExtension/
    ```
 
 2. **Configure Web App Integration**
@@ -127,7 +127,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
    // Create manifest-v2.json for Firefox
    {
      "manifest_version": 2,
-     "name": "URL Bookmarks",
+     "name": "Stash",
      "version": "1.0.0",
      "permissions": ["activeTab", "storage", "contextMenus"],
      "background": {
@@ -155,7 +155,7 @@ This guide covers setting up platform-specific integrations for the URL Bookmark
 1. **Create Service Worker**
    ```javascript
    // Add to Web/public/sw.js
-   const CACHE_NAME = 'url-bookmarks-v1';
+   const CACHE_NAME = 'stash-v1';
    const urlsToCache = [
      '/',
      '/static/js/bundle.js',

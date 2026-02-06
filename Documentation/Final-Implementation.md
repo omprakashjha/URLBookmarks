@@ -1,4 +1,4 @@
-# Final Implementation Guide - URL Bookmarks Cross-Platform App
+# Final Implementation Guide - Stash Cross-Platform App
 
 ## Project Overview
 
@@ -57,19 +57,19 @@ A comprehensive URL bookmarking solution with native macOS app, iOS app, and web
 ## File Structure
 
 ```
-URLBookmarks/
+Stash/
 ├── README.md
 ├── Shared/
 │   ├── CloudKitSchema.json
 │   ├── PersistenceController.swift
 │   ├── URLBookmark+CoreDataClass.swift
-│   ├── URLBookmarksDataModel.xcdatamodeld
+│   ├── StashDataModel.xcdatamodeld
 │   ├── ExportImportService.swift
 │   ├── CrossPlatformSyncManager.swift
 │   ├── OfflineManager.swift
 │   └── PerformanceManager.swift
 ├── macOS/
-│   ├── URLBookmarksApp.swift
+│   ├── StashApp.swift
 │   ├── ContentView.swift
 │   ├── URLBookmarkRow.swift
 │   ├── AddURLView.swift
@@ -77,9 +77,9 @@ URLBookmarks/
 │   ├── SettingsView.swift
 │   ├── SyncStatusView.swift
 │   ├── SpotlightIndexer.swift
-│   └── URLBookmarks.xcodeproj/
+│   └── Stash.xcodeproj/
 ├── iOS/
-│   ├── URLBookmarksApp.swift
+│   ├── StashApp.swift
 │   ├── ContentView.swift
 │   ├── URLBookmarkRow.swift
 │   ├── AddURLView.swift
@@ -89,7 +89,7 @@ URLBookmarks/
 │   ├── BackupManagerView.swift
 │   ├── ShareExtension/
 │   ├── BookmarkWidget/
-│   └── URLBookmarksApp.xcodeproj/
+│   └── StashApp.xcodeproj/
 ├── Web/
 │   ├── package.json
 │   ├── public/
@@ -140,10 +140,10 @@ URLBookmarks/
 2. **Build Native Apps**
    ```bash
    # macOS
-   cd macOS && open URLBookmarks.xcodeproj
+   cd macOS && open Stash.xcodeproj
    
    # iOS  
-   cd iOS && open URLBookmarks.xcodeproj
+   cd iOS && open Stash.xcodeproj
    ```
 
 3. **Run Web App**

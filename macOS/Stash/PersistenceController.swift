@@ -6,7 +6,7 @@ class PersistenceController: ObservableObject {
     
     // MARK: - Core Data Stack
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "URLBookmarks")
+        let container = NSPersistentContainer(name: "Stash")
         
         container.loadPersistentStores { _, error in
             if let error = error {

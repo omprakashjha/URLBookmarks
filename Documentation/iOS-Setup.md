@@ -11,33 +11,33 @@
 
 ### 1. Open the Project
 ```bash
-cd /Users/opjha/URLBookmarks/iOS
-open URLBookmarks.xcodeproj
+cd /Users/opjha/Stash/iOS
+open Stash.xcodeproj
 ```
 
 ### 2. Configure Development Team
 1. Select the project in Xcode navigator
 2. Go to "Signing & Capabilities" tab
 3. Select your development team (same as macOS app)
-4. Use the same bundle identifier: `com.yourteam.urlbookmarks`
+4. Use the same bundle identifier: `com.yourteam.stash`
 
 ### 3. CloudKit Container Setup
 1. In Xcode, go to "Signing & Capabilities"
 2. Verify CloudKit capability is enabled
 3. **Important**: Use the same CloudKit container as macOS app:
-   - Container: `iCloud.com.yourteam.urlbookmarks`
+   - Container: `iCloud.com.yourteam.stash`
    - Update container identifier in:
-     - `URLBookmarks.entitlements`
+     - `Stash.entitlements`
      - `PersistenceController.swift` (shared file)
 
 ### 4. Shared Files
 The iOS app shares Core Data files with macOS via symbolic links:
 - `PersistenceController.swift` → `../../Shared/PersistenceController.swift`
 - `URLBookmark+CoreDataClass.swift` → `../../Shared/URLBookmark+CoreDataClass.swift`
-- `URLBookmarks.xcdatamodeld` → `../../Shared/URLBookmarks.xcdatamodeld`
+- `Stash.xcdatamodeld` → `../../Shared/Stash.xcdatamodeld`
 
 ### 5. Build and Run
-1. Select "URLBookmarks" scheme
+1. Select "Stash" scheme
 2. Choose iOS Simulator or connected device
 3. Press ⌘+R to build and run
 

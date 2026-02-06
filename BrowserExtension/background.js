@@ -1,6 +1,6 @@
 // Background Service Worker
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('URL Bookmarks extension installed');
+  console.log('Stash extension installed');
 });
 
 // Handle messages from content scripts or popup
@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Context menu for right-click save
 chrome.contextMenus.create({
   id: 'saveToBookmarks',
-  title: 'Save to URL Bookmarks',
+  title: 'Save to Stash',
   contexts: ['page', 'link']
 });
 
@@ -40,7 +40,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       chrome.notifications.create({
         type: 'basic',
         iconUrl: 'icons/icon48.png',
-        title: 'URL Bookmarks',
+        title: 'Stash',
         message: 'Bookmark saved successfully!'
       });
     } catch (error) {
@@ -49,7 +49,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       chrome.notifications.create({
         type: 'basic',
         iconUrl: 'icons/icon48.png',
-        title: 'URL Bookmarks',
+        title: 'Stash',
         message: 'Failed to save bookmark'
       });
     }

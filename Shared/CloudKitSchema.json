@@ -56,7 +56,7 @@
     }
   },
   "zones": {
-    "URLBookmarksZone": {
+    "StashZone": {
       "type": "CUSTOM",
       "atomic": true
     }

@@ -62,7 +62,7 @@ class ExportImportService {
             encoder.outputFormatting = .prettyPrinted
             
             let jsonData = try encoder.encode(exportData)
-            let filename = "url-bookmarks-\(dateFormatter.string(from: Date())).json"
+            let filename = "stash-\(dateFormatter.string(from: Date())).json"
             
             return .success(jsonData, filename, .json)
         } catch {
@@ -88,7 +88,7 @@ class ExportImportService {
         }
         
         let csvData = csvContent.data(using: .utf8)!
-        let filename = "url-bookmarks-\(dateFormatter.string(from: Date())).csv"
+        let filename = "stash-\(dateFormatter.string(from: Date())).csv"
         
         return .success(csvData, filename, .csv)
     }
@@ -98,7 +98,7 @@ class ExportImportService {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>URL Bookmarks Export</title>
+            <title>Stash Export</title>
             <meta charset="utf-8">
             <style>
                 body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 40px; }
@@ -110,7 +110,7 @@ class ExportImportService {
             </style>
         </head>
         <body>
-            <h1>URL Bookmarks</h1>
+            <h1>Stash</h1>
             <p>Exported on \(DateFormatter.readable.string(from: Date()))</p>
         """
         
@@ -136,7 +136,7 @@ class ExportImportService {
         htmlContent += "</body></html>"
         
         let htmlData = htmlContent.data(using: .utf8)!
-        let filename = "url-bookmarks-\(dateFormatter.string(from: Date())).html"
+        let filename = "stash-\(dateFormatter.string(from: Date())).html"
         
         return .success(htmlData, filename, .html)
     }

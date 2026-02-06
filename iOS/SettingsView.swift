@@ -142,7 +142,7 @@ struct SettingsView: View {
                             .frame(width: 24)
                         
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("URL Bookmarks")
+                            Text("Stash")
                                 .font(.headline)
                             Text("Version 1.0.0")
                                 .font(.caption)

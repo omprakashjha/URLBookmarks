@@ -34,7 +34,7 @@ class SpotlightIndexer {
         guard let id = bookmark.id else { return }
         let searchableItem = CSSearchableItem(
             uniqueIdentifier: id.uuidString,
-            domainIdentifier: "com.urlbookmarks.app.bookmarks",
+            domainIdentifier: "com.stash.app.bookmarks",
             attributeSet: attributeSet
         )
         

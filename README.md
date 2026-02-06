@@ -1,4 +1,4 @@
-# URL Bookmarks
+# Stash
 
 A cross-platform URL bookmarking application with iOS, macOS, and web versions featuring CloudKit sync.
 
@@ -24,14 +24,14 @@ npm start
 The web app automatically falls back to demo mode if CloudKit isn't configured.
 
 ### iOS/macOS Apps
-1. Open `URLBookmarks.xcodeproj` in Xcode
+1. Open `Stash.xcodeproj` in Xcode
 2. Configure CloudKit container in project settings
 3. Build and run
 
 ## Project Structure
 
 ```
-URLBookmarks/
+Stash/
 ├── iOS/              # SwiftUI iOS app
 ├── macOS/            # AppKit macOS app  
 ├── Web/              # React web app

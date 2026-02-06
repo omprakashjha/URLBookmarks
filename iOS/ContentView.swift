@@ -55,7 +55,7 @@ struct ContentView: View {
                     )
                 }
             }
-            .navigationTitle("URL Bookmarks")
+            .navigationTitle("Stash")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

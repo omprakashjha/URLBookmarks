@@ -4,7 +4,7 @@ class WebOfflineManager {
     this.isOnline = navigator.onLine;
     this.offlineQueue = [];
     this.listeners = new Set();
-    this.dbName = 'URLBookmarksOffline';
+    this.dbName = 'StashOffline';
     this.dbVersion = 1;
     
     this.setupEventListeners();
