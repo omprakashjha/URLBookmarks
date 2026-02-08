@@ -211,4 +211,5 @@ class CloudKitService {
 }
 
 // Export singleton instance
-export default new CloudKitService();
+const cloudKitService = new CloudKitService();
+export default cloudKitService;
