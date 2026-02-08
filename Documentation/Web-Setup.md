@@ -10,7 +10,7 @@
 
 ### 1. Install Dependencies
 ```bash
-cd /Users/opjha/URLBookmarks/Web
+cd /Users/opjha/Stash/Web
 npm install
 ```
 
@@ -18,7 +18,7 @@ npm install
 
 #### Step 1: Enable CloudKit Web Services
 1. Go to [CloudKit Console](https://icloud.developer.apple.com/dashboard/)
-2. Select your container: `iCloud.com.yourteam.urlbookmarks`
+2. Select your container: `iCloud.com.yourteam.stash`
 3. Go to "Settings" → "CloudKit Web Services"
 4. Click "Enable CloudKit Web Services"
 
@@ -41,7 +41,7 @@ REACT_APP_CLOUDKIT_API_TOKEN=your_api_token_here
 Edit `src/services/CloudKitService.js`:
 ```javascript
 const CLOUDKIT_CONFIG = {
-  containerIdentifier: 'iCloud.com.yourteam.urlbookmarks', // Match your container
+  containerIdentifier: 'iCloud.com.yourteam.stash', // Match your container
   apiTokenAuth: {
     apiToken: process.env.REACT_APP_CLOUDKIT_API_TOKEN,
     persist: true

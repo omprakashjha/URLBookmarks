@@ -121,7 +121,7 @@ struct ContentView: View {
     private func exportURLs() {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.json]
-        panel.nameFieldStringValue = "URL Bookmarks.json"
+        panel.nameFieldStringValue = "Stash.json"
         
         if panel.runModal() == .OK, let url = panel.url {
             exportBookmarks(to: url)

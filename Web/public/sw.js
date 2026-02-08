@@ -1,6 +1,6 @@
 // Web Service Worker for Offline Support
-const CACHE_NAME = 'url-bookmarks-v1';
-const STATIC_CACHE_NAME = 'url-bookmarks-static-v1';
+const CACHE_NAME = 'stash-v1';
+const STATIC_CACHE_NAME = 'stash-static-v1';
 
 const STATIC_ASSETS = [
   '/',
@@ -10,7 +10,7 @@ const STATIC_ASSETS = [
   '/favicon.ico'
 ];
 
-const API_CACHE_NAME = 'url-bookmarks-api-v1';
+const API_CACHE_NAME = 'stash-api-v1';
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
@@ -176,7 +176,7 @@ async function processOfflineOperation(operation) {
 // IndexedDB operations for offline queue
 async function getOfflineOperations() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open('URLBookmarksOffline', 1);
+    const request = indexedDB.open('StashOffline', 1);
     
     request.onerror = () => reject(request.error);
     
@@ -201,7 +201,7 @@ async function getOfflineOperations() {
 
 async function removeOfflineOperation(id) {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open('URLBookmarksOffline', 1);
+    const request = indexedDB.open('StashOffline', 1);
     
     request.onsuccess = () => {
       const db = request.result;

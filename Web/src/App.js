@@ -216,19 +216,19 @@ function App() {
     switch (format) {
       case 'csv':
         dataStr = exportAsCSV(exportData.bookmarks);
-        filename = `url-bookmarks-${getDateString()}.csv`;
+        filename = `stash-${getDateString()}.csv`;
         mimeType = 'text/csv';
         break;
       
       case 'html':
         dataStr = exportAsHTML(exportData.bookmarks);
-        filename = `url-bookmarks-${getDateString()}.html`;
+        filename = `stash-${getDateString()}.html`;
         mimeType = 'text/html';
         break;
       
       default:
         dataStr = JSON.stringify(exportData, null, 2);
-        filename = `url-bookmarks-${getDateString()}.json`;
+        filename = `stash-${getDateString()}.json`;
         mimeType = 'application/json';
     }
 
@@ -265,7 +265,7 @@ function App() {
     let htmlContent = `<!DOCTYPE html>
 <html>
 <head>
-    <title>URL Bookmarks Export</title>
+    <title>Stash Export</title>
     <meta charset="utf-8">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 40px; }
@@ -277,7 +277,7 @@ function App() {
     </style>
 </head>
 <body>
-    <h1>URL Bookmarks</h1>
+    <h1>Stash</h1>
     <p>Exported on ${now}</p>
 `;
 
@@ -500,7 +500,7 @@ function App() {
       <header className="header">
         <div className="header-content">
           <h1 className="logo">
-            URL Bookmarks
+            Stash
             {isDemoMode && <span className="demo-badge">Demo</span>}
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -672,7 +672,7 @@ function App() {
         fontSize: '12px',
         borderTop: '1px solid #e5e5ea'
       }}>
-        URL Bookmarks v{APP_VERSION}
+        Stash v{APP_VERSION}
       </footer>
     </div>
   );

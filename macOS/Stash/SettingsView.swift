@@ -29,7 +29,7 @@ struct GeneralSettingsView: View {
                 .fontWeight(.semibold)
             
             VStack(alignment: .leading, spacing: 12) {
-                Text("About URL Bookmarks")
+                Text("About Stash")
                     .font(.headline)
                 
                 Text("A simple and intuitive URL bookmarking app with iCloud sync.")

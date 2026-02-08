@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A000001 /* URLBookmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000001 /* URLBookmarksApp.swift */; };
+		3A000001 /* StashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000001 /* StashApp.swift */; };
 		3A000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000002 /* ContentView.swift */; };
 		3A000003 /* URLBookmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000003 /* URLBookmarkRow.swift */; };
 		3A000004 /* AddURLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000004 /* AddURLView.swift */; };
@@ -17,7 +17,7 @@
 		3A000008 /* ConflictResolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000008 /* ConflictResolutionView.swift */; };
 		3A000009 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000009 /* PersistenceController.swift */; };
 		3A00000A /* URLBookmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000A /* URLBookmark+CoreDataClass.swift */; };
-		3A00000B /* URLBookmarks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000B /* URLBookmarks.xcdatamodeld */; };
+		3A00000B /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000B /* Stash.xcdatamodeld */; };
 		3A00000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B00000C /* Assets.xcassets */; };
 		3A00000D /* OfflineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00000F /* OfflineManager.swift */; };
 		3A00000E /* PerformanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B000010 /* PerformanceManager.swift */; };
@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B000001 /* URLBookmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLBookmarksApp.swift; path = ../URLBookmarksApp.swift; sourceTree = "<group>"; };
+		3B000001 /* StashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StashApp.swift; path = ../StashApp.swift; sourceTree = "<group>"; };
 		3B000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../ContentView.swift; sourceTree = "<group>"; };
 		3B000003 /* URLBookmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLBookmarkRow.swift; path = ../URLBookmarkRow.swift; sourceTree = "<group>"; };
 		3B000004 /* AddURLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddURLView.swift; path = ../AddURLView.swift; sourceTree = "<group>"; };
@@ -34,16 +34,16 @@
 		3B000006 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = ../SettingsView.swift; sourceTree = "<group>"; };
 		3B000007 /* BackupManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupManagerView.swift; path = ../BackupManagerView.swift; sourceTree = "<group>"; };
 		3B000008 /* ConflictResolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConflictResolutionView.swift; path = ../ConflictResolutionView.swift; sourceTree = "<group>"; };
-		3B000009 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistenceController.swift; path = ../URLBookmarks/PersistenceController.swift; sourceTree = "<group>"; };
-		3B00000A /* URLBookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "URLBookmark+CoreDataClass.swift"; path = "../URLBookmarks/URLBookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3B00000B /* URLBookmarks.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = URLBookmarks.xcdatamodeld; path = ../URLBookmarks/URLBookmarks.xcdatamodeld; sourceTree = "<group>"; };
-		3B00000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../URLBookmarks/Assets.xcassets; sourceTree = "<group>"; };
-		3B00000D /* URLBookmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = URLBookmarks.entitlements; path = ../URLBookmarks/URLBookmarks.entitlements; sourceTree = "<group>"; };
+		3B000009 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistenceController.swift; path = ../Stash/PersistenceController.swift; sourceTree = "<group>"; };
+		3B00000A /* URLBookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "URLBookmark+CoreDataClass.swift"; path = "../Stash/URLBookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3B00000B /* Stash.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = Stash.xcdatamodeld; path = ../Stash/Stash.xcdatamodeld; sourceTree = "<group>"; };
+		3B00000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Stash/Assets.xcassets; sourceTree = "<group>"; };
+		3B00000D /* Stash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Stash.entitlements; path = ../Stash/Stash.entitlements; sourceTree = "<group>"; };
 		3B00000F /* OfflineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineManager.swift; path = ../../Shared/OfflineManager.swift; sourceTree = "<group>"; };
 		3B000010 /* PerformanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PerformanceManager.swift; path = ../../Shared/PerformanceManager.swift; sourceTree = "<group>"; };
 		3B000011 /* CrossPlatformSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrossPlatformSyncManager.swift; path = ../../Shared/CrossPlatformSyncManager.swift; sourceTree = "<group>"; };
 		3B000012 /* ExportImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExportImportService.swift; path = ../../Shared/ExportImportService.swift; sourceTree = "<group>"; };
-		3C000001 /* URLBookmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLBookmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C000001 /* Stash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,16 +60,16 @@
 		3E000001 = {
 			isa = PBXGroup;
 			children = (
-				3E000002 /* URLBookmarks */,
+				3E000002 /* Stash */,
 				3E000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3E000002 /* URLBookmarks */ = {
+		3E000002 /* Stash */ = {
 			isa = PBXGroup;
 			children = (
-				3B00000D /* URLBookmarks.entitlements */,
-				3B000001 /* URLBookmarksApp.swift */,
+				3B00000D /* Stash.entitlements */,
+				3B000001 /* StashApp.swift */,
 				3B000002 /* ContentView.swift */,
 				3B000003 /* URLBookmarkRow.swift */,
 				3B000004 /* AddURLView.swift */,
@@ -79,20 +79,20 @@
 				3B000008 /* ConflictResolutionView.swift */,
 				3B000009 /* PersistenceController.swift */,
 				3B00000A /* URLBookmark+CoreDataClass.swift */,
-				3B00000B /* URLBookmarks.xcdatamodeld */,
+				3B00000B /* Stash.xcdatamodeld */,
 				3B00000F /* OfflineManager.swift */,
 				3B000010 /* PerformanceManager.swift */,
 				3B000011 /* CrossPlatformSyncManager.swift */,
 				3B000012 /* ExportImportService.swift */,
 				3B00000C /* Assets.xcassets */,
 			);
-			path = URLBookmarks;
+			path = Stash;
 			sourceTree = "<group>";
 		};
 		3E000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C000001 /* URLBookmarks.app */,
+				3C000001 /* Stash.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F000001 /* URLBookmarks */ = {
+		3F000001 /* Stash */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F000002 /* Build configuration list for PBXNativeTarget "URLBookmarks" */;
+			buildConfigurationList = 3F000002 /* Build configuration list for PBXNativeTarget "Stash" */;
 			buildPhases = (
 				3F000003 /* Sources */,
 				3D000001 /* Frameworks */,
@@ -112,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = URLBookmarks;
-			productName = URLBookmarks;
-			productReference = 3C000001 /* URLBookmarks.app */;
+			name = Stash;
+			productName = Stash;
+			productReference = 3C000001 /* Stash.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F000006 /* Build configuration list for PBXProject "URLBookmarks" */;
+			buildConfigurationList = 3F000006 /* Build configuration list for PBXProject "Stash" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F000001 /* URLBookmarks */,
+				3F000001 /* Stash */,
 			);
 		};
 /* End PBXProject section */
@@ -166,7 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A000001 /* URLBookmarksApp.swift in Sources */,
+				3A000001 /* StashApp.swift in Sources */,
 				3A000002 /* ContentView.swift in Sources */,
 				3A000003 /* URLBookmarkRow.swift in Sources */,
 				3A000004 /* AddURLView.swift in Sources */,
@@ -176,7 +176,7 @@
 				3A000008 /* ConflictResolutionView.swift in Sources */,
 				3A000009 /* PersistenceController.swift in Sources */,
 				3A00000A /* URLBookmark+CoreDataClass.swift in Sources */,
-				3A00000B /* URLBookmarks.xcdatamodeld in Sources */,
+				3A00000B /* Stash.xcdatamodeld in Sources */,
 				3A00000D /* OfflineManager.swift in Sources */,
 				3A00000E /* PerformanceManager.swift in Sources */,
 				3A00000F /* CrossPlatformSyncManager.swift in Sources */,
@@ -311,14 +311,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = URLBookmarks/URLBookmarks.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Stash/Stash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "URL Bookmarks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Stash";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.urlbookmarks.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stash.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -343,14 +343,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = URLBookmarks/URLBookmarks.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Stash/Stash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "URL Bookmarks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Stash";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -362,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.urlbookmarks.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stash.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,7 +373,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F000006 /* Build configuration list for PBXProject "URLBookmarks" */ = {
+		3F000006 /* Build configuration list for PBXProject "Stash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F000007 /* Debug */,
@@ -382,7 +382,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F000002 /* Build configuration list for PBXNativeTarget "URLBookmarks" */ = {
+		3F000002 /* Build configuration list for PBXNativeTarget "Stash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F000009 /* Debug */,
@@ -394,17 +394,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3B00000B /* URLBookmarks.xcdatamodeld */ = {
+		3B00000B /* Stash.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3B00000E /* URLBookmarks.xcdatamodel */,
+				3B00000E /* Stash.xcdatamodel */,
 			);
-			currentVersion = 3B00000E /* URLBookmarks.xcdatamodel */;
-			path = URLBookmarks.xcdatamodeld;
+			currentVersion = 3B00000E /* Stash.xcdatamodel */;
+			path = Stash.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		3B00000E /* URLBookmarks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = URLBookmarks.xcdatamodel; sourceTree = "<group>"; };
+		3B00000E /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
 /* End XCVersionGroup section */
 	};
 	rootObject = 3F000005 /* Project object */;

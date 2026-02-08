@@ -3,7 +3,7 @@ import AppKit
 import CoreSpotlight
 
 @main
-struct URLBookmarksApp: App {
+struct StashApp: App {
     let persistenceController = PersistenceController.shared
     
     var body: some Scene {
@@ -16,7 +16,7 @@ struct URLBookmarksApp: App {
                 }
         }
         .commands {
-            URLBookmarksCommands()
+            StashCommands()
         }
         
         Settings {
@@ -34,7 +34,7 @@ struct URLBookmarksApp: App {
     }
 }
 
-struct URLBookmarksCommands: Commands {
+struct StashCommands: Commands {
     var body: some Commands {
         CommandGroup(after: .newItem) {
             Button("Add URL...") {

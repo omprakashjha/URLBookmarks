@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to toggle demo mode for URL Bookmarks web app
+# Script to toggle demo mode for Stash web app
 
 ENV_FILE=".env"
 

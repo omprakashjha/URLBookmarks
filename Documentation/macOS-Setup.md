@@ -10,24 +10,24 @@
 
 ### 1. Open the Project
 ```bash
-cd /Users/opjha/URLBookmarks/macOS
-open URLBookmarks.xcodeproj
+cd /Users/opjha/Stash/macOS
+open Stash.xcodeproj
 ```
 
 ### 2. Configure Development Team
 1. Select the project in Xcode navigator
 2. Go to "Signing & Capabilities" tab
 3. Select your development team
-4. Ensure bundle identifier is unique: `com.yourteam.urlbookmarks`
+4. Ensure bundle identifier is unique: `com.yourteam.stash`
 
 ### 3. CloudKit Container Setup
 1. In Xcode, go to "Signing & Capabilities"
 2. Verify CloudKit capability is enabled
 3. Create CloudKit container:
    - Go to [CloudKit Console](https://icloud.developer.apple.com/dashboard/)
-   - Create new container: `iCloud.com.yourteam.urlbookmarks`
+   - Create new container: `iCloud.com.yourteam.stash`
    - Update container identifier in:
-     - `URLBookmarks.entitlements`
+     - `Stash.entitlements`
      - `PersistenceController.swift`
 
 ### 4. CloudKit Schema Setup
@@ -46,7 +46,7 @@ open URLBookmarks.xcodeproj
      - `lastSyncDate` (Date/Time, optional)
 
 ### 5. Build and Run
-1. Select "URLBookmarks" scheme
+1. Select "Stash" scheme
 2. Choose "My Mac" as destination
 3. Press ⌘+R to build and run
 

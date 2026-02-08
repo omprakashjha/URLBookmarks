@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct URLBookmarksApp: App {
+struct StashApp: App {
     let persistenceController = PersistenceController.shared
     
     var body: some Scene {

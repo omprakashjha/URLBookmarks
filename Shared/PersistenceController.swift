@@ -6,12 +6,12 @@ class PersistenceController: ObservableObject {
     static let shared = PersistenceController()
     
     // MARK: - CloudKit Configuration
-    private let containerIdentifier = "iCloud.com.urlbookmarks.app"
-    private let zoneName = "URLBookmarksZone"
+    private let containerIdentifier = "iCloud.com.stash.app"
+    private let zoneName = "StashZone"
     
     // MARK: - Core Data Stack
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "URLBookmarks")
+        let container = NSPersistentCloudKitContainer(name: "Stash")
         
         // Configure CloudKit
         let storeDescription = container.persistentStoreDescriptions.first!

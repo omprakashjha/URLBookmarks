@@ -10,7 +10,7 @@
     }
   });
   
-  // Check if this is the URL Bookmarks web app
+  // Check if this is the Stash web app
   const isWebApp = window.location.hostname.includes('your-web-app-domain.com'); // Update with your domain
   
   if (isWebApp) {
@@ -20,8 +20,8 @@
   
   function handleNewBookmarkFromExtension(bookmarkData) {
     // If this is the web app, trigger a refresh or add the bookmark directly
-    if (isWebApp && window.URLBookmarksApp) {
-      window.URLBookmarksApp.addBookmarkFromExtension(bookmarkData);
+    if (isWebApp && window.StashApp) {
+      window.StashApp.addBookmarkFromExtension(bookmarkData);
     }
   }
   
@@ -29,7 +29,7 @@
     // Create a bridge between extension and web app
     const script = document.createElement('script');
     script.textContent = `
-      window.URLBookmarksExtension = {
+      window.StashExtension = {
         isAvailable: true,
         saveBookmark: function(bookmarkData) {
           return new Promise((resolve, reject) => {

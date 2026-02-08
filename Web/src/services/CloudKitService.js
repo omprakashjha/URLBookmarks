@@ -1,6 +1,6 @@
 // CloudKit Web Service Configuration
 const CLOUDKIT_CONFIG = {
-  containerIdentifier: 'iCloud.com.urlbookmarks.app',
+  containerIdentifier: 'iCloud.com.stash.app',
   apiTokenAuth: {
     // This will need to be configured in CloudKit Console
     apiToken: process.env.REACT_APP_CLOUDKIT_API_TOKEN || 'YOUR_API_TOKEN_HERE',
