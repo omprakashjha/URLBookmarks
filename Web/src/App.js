@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import CloudKitService from './services/CloudKitService';
 import BookmarkList from './components/BookmarkList';
 import AddBookmarkModal from './components/AddBookmarkModal';
@@ -20,11 +20,7 @@ function App() {
   const [isDemoMode, setIsDemoMode] = useState(DEMO_MODE);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'grid'
 
-  useEffect(() => {
-    initializeCloudKit();
-  }, []);
-
-  const initializeCloudKit = async () => {
+  const initializeCloudKit = useCallback(async () => {
     if (isDemoMode) {
       setAuthState('signedIn');
       setIsAuthenticated(true);
@@ -61,7 +57,11 @@ function App() {
       setIsAuthenticated(true);
       setBookmarks(DEMO_BOOKMARKS);
     }
-  };
+  }, [isDemoMode]);
+
+  useEffect(() => {
+    initializeCloudKit();
+  }, [initializeCloudKit]);
 
   const loadBookmarks = async () => {
     if (!isAuthenticated) return;
